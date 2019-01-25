@@ -1,0 +1,30 @@
+PreRequisites
+Please ensure Python 2.7.x is installed along with bs4 python package if not already installed.
+
+RUNNING INSTRUCTIONS
+These scripts can be run using Python 2.7.10
+$ python myparse.py <url_path> <num_of_max_occurence_words>
+
+Ex:
+$ python myparse.py https://hiverhq.com/ 20
+
+In case of stop words that are present, please add it in config. config.py
+
+Data Structure Details:
+Created a DataStructure composed of MAXHEAP, DICTIONARY.
+DICTIONARY stores the frequency of occurences of a given key.
+MAXHEAP maintains the HEAP Property based on frequency rather than the actual key.
+Thus at any given inserts it will always maintains the heap property.
+If key already exists then it will get the address of element present in HEAP using DICTIONARY and does the heapify to maintain heap property.
+
+It supports
+1) Insert (key): Inserts into Dictionary, and inserts to Heap/ HEAPIFY O(logk) where K is the total number of distinct keys present at any number of words.
+2) max_n_occurences: Does extract_max of heap, and returns the keys. Does in nlogK where K is the total number of distinct keys present.
+
+Parsing of HTML:
+Using bs4, recursively parses the HTML and formed list of all words later that is passed to the above datastructure.
+
+Time Complexity of this solution is
+NlogK + nlogK
+where N is the total number of words in a HTML.
+
